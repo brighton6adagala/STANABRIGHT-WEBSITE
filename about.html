@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mfangano Central SDA Church | About Us</title>
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9f7f4;
+            color: #2c2c2c;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------- UTILITY ---------- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1a3a4a;
+            text-align: center;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #5a6b7a;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #2a7a4a, #4cb87a);
+            margin: 0 auto 24px;
+            border-radius: 4px;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            background: #0f2a38;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: background 0.3s;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .nav-brand .cross-icon {
+            font-size: 1.8rem;
+            color: #4cb87a;
+        }
+
+        .nav-brand span {
+            font-weight: 300;
+            color: #aac7d6;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            color: #d4e2ea;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(76, 184, 122, 0.2);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .nav-links li a.active {
+            background: #2a7a4a;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(42, 122, 74, 0.4);
+        }
+
+        /* Mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        /* ---------- HERO / BANNER ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0f2a38 0%, #1a4a5a 50%, #0f2a38 100%);
+            color: #fff;
+            padding: 80px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: #f9f7f4;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(76, 184, 122, 0.2);
+            border: 1px solid rgba(76, 184, 122, 0.3);
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #8ed4b0;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(90deg, #4cb87a, #8ed4b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            color: #c8dce6;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: #2a7a4a;
+            color: #fff;
+            padding: 14px 44px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(42, 122, 74, 0.35);
+        }
+
+        .hero-btn:hover {
+            background: #3a9a5a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(42, 122, 74, 0.45);
+        }
+
+        /* ---------- ABOUT SECTION ---------- */
+        .about-section {
+            padding: 80px 0 60px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: #1a3a4a;
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            color: #3d4f5e;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .about-text .highlight-text {
+            border-left: 4px solid #2a7a4a;
+            padding-left: 20px;
+            font-style: italic;
+            color: #1a3a4a;
+            font-weight: 500;
+            background: #f0f5f2;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #1a4a5a, #0f2a38);
+            border-radius: 20px;
+            padding: 40px 30px;
+            color: #fff;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(15, 42, 56, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image .church-icon {
+            font-size: 4.5rem;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .about-image h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .about-image p {
+            color: #b8d4e0;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        .about-image .floating-text {
+            position: absolute;
+            font-size: 6rem;
+            font-weight: 900;
+            opacity: 0.04;
+            right: -20px;
+            bottom: -30px;
+            color: #fff;
+            pointer-events: none;
+            letter-spacing: 8px;
+        }
+
+        /* ---------- STATS ---------- */
+        .stats-section {
+            background: #0f2a38;
+            padding: 60px 0;
+            color: #fff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #4cb87a;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-item .stat-label {
+            font-size: 1rem;
+            color: #aac7d6;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- MISSION & VISION ---------- */
+        .mission-vision {
+            padding: 70px 0 60px;
+            background: #fff;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .mv-card {
+            background: #f4f8f6;
+            padding: 40px 32px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e6edea;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(15, 42, 56, 0.08);
+            border-color: #4cb87a;
+        }
+
+        .mv-card .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .mv-card h3 {
+            font-size: 1.6rem;
+            color: #1a3a4a;
+            margin-bottom: 12px;
+        }
+
+        .mv-card p {
+            color: #3d4f5e;
+            font-size: 1.05rem;
+        }
+
+        /* ---------- CORE VALUES ---------- */
+        .values-section {
+            padding: 70px 0 60px;
+            background: #f4f8f6;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .value-item {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .value-item:hover {
+            border-bottom-color: #2a7a4a;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+        }
+
+        .value-item .val-icon {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .value-item h4 {
+            color: #1a3a4a;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .value-item p {
+            color: #5a6b7a;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- LEADERSHIP ---------- */
+        .leadership-section {
+            padding: 70px 0 60px;
+            background: #fff;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .leader-card {
+            background: #f9fbfa;
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: center;
+            border: 1px solid #e6edea;
+            transition: all 0.3s;
+        }
+
+        .leader-card:hover {
+            border-color: #4cb87a;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .leader-card .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a4a5a, #2a7a4a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 2.6rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .leader-card h4 {
+            color: #1a3a4a;
+            font-size: 1.2rem;
+        }
+
+        .leader-card .role {
+            color: #2a7a4a;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+            margin: 4px 0 8px;
+        }
+
+        .leader-card p {
+            color: #5a6b7a;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- HISTORY TIMELINE ---------- */
+        .history-section {
+            padding: 70px 0 60px;
+            background: #f4f8f6;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 30px auto 0;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #2a7a4a, #4cb87a, #8ed4b0);
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+            padding-left: 28px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2a7a4a;
+            border: 3px solid #f4f8f6;
+            box-shadow: 0 0 0 3px #2a7a4a;
+        }
+
+        .timeline-item .year {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a3a4a;
+            display: block;
+        }
+
+        .timeline-item p {
+            color: #3d4f5e;
+            margin-top: 4px;
+        }
+
+        /* ---------- CONTACT / FOOTER ---------- */
+        .contact-section {
+            background: #0f2a38;
+            color: #d4e2ea;
+            padding: 60px 0 30px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-grid p,
+        .contact-grid li {
+            color: #aac7d6;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .contact-grid ul {
+            list-style: none;
+        }
+
+        .contact-grid ul li::before {
+            content: '› ';
+            color: #4cb87a;
+            font-weight: 700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7a9aaa;
+        }
+
+        .footer-bottom .heart {
+            color: #e74c6f;
+        }
+
+        /* ---------- BACK TO TOP ---------- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2a7a4a;
+            color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 8px 28px rgba(42, 122, 74, 0.35);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            background: #3a9a5a;
+            transform: translateY(-4px);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0 8px;
+                gap: 6px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li a {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .stat-item .stat-number {
+                font-size: 2rem;
+            }
+
+            .about-image {
+                min-height: 200px;
+                padding: 30px 20px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 16px;
+            }
+
+            .timeline-item::before {
+                left: -24px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-btn {
+                padding: 12px 32px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .stat-item .stat-number {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="cross-icon">✝</span>
+                Mfangano<span>Central</span>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="Home.html">home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="ministries.htm">Ministries</a></li>
+                <li><a href="Sermon.html">Sermons</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">⛪ Since 1924</div>
+            <h1>About <span class="highlight">Mfangano Central</span> SDA Church</h1>
+            <p>
+                A community of faith anchored in God's love, serving the people of
+                Mfangano Island and beyond with hope, healing, and wholeness.
+            </p>
+            <button class="hero-btn" id="exploreBtn">Explore Our Story ↓</button>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT US ========== -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <span class="section-subtitle" style="font-weight:600; color:#2a7a4a; letter-spacing:2px; text-transform:uppercase; font-size:0.8rem;">
+                Who We Are
+            </span>
+            <h2 class="section-title">Our Church Family</h2>
+            <div class="divider"></div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Rooted in Faith, Reaching Out in Love</h2>
+                    <p>
+                        <strong>Mfangano Central SDA Church</strong> is a vibrant Seventh-day Adventist
+                        congregation located on the beautiful Mfangano Island in Lake Victoria, Kenya.
+                        We are a family of believers committed to following Jesus Christ, sharing His
+                        love, and preparing for His soon return.
+                    </p>
+                    <p>
+                        Our church has been a beacon of light in the community for nearly a century,
+                        offering spiritual guidance, education, health services, and community development
+                        programs that transform lives and uplift families.
+                    </p>
+                    <div class="highlight-text">
+                        "We are called to be the hands and feet of Jesus — serving our community with
+                        compassion, integrity, and the unwavering hope of the gospel."
+                    </div>
+                    <p>
+                        Whether you're a long-time member or a first-time visitor, you'll find a warm
+                        welcome at Mfangano Central. We worship together, grow together, and serve
+                        together as one body in Christ.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="floating-text">✝</div>
+                    <div class="church-icon">⛪</div>
+                    <h3>Mfangano Central SDA</h3>
+                    <p>Mfangano Island, Lake Victoria, Kenya</p>
+                    <p style="margin-top:12px; font-size:0.85rem; opacity:0.7;">
+                        "A church where every heart finds a home."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">Years of Ministry</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="1200">0</span>
+                    <span class="stat-label">Active Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="15">0</span>
+                    <span class="stat-label">Outreach Programs</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">Branches &amp; Missions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MISSION & VISION ========== -->
+    <section class="mission-vision">
+        <div class="container">
+            <span class="section-subtitle" style="font-weight:600; color:#2a7a4a; letter-spacing:2px; text-transform:uppercase; font-size:0.8rem;">
+                Our Purpose
+            </span>
+            <h2 class="section-title">Mission &amp; Vision</h2>
+            <div class="divider"></div>
+
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <span class="icon">🌍</span>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To proclaim the everlasting gospel of Jesus Christ to the people of Mfangano
+                        Island and the surrounding regions, making disciples, nurturing believers,
+                        and preparing a people for the soon-coming of our Lord.
+                    </p>
+                </div>
+                <div class="mv-card">
+                    <span class="icon">🌟</span>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To be a lighthouse of hope and healing — a church where every person
+                        experiences God's love, grows in faith, and is equipped to serve their
+                        community with excellence and compassion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CORE VALUES ========== -->
+    <section class="values-section">
+        <div class="container">
+            <span class="section-subtitle" style="font-weight:600; color:#2a7a4a; letter-spacing:2px; text-transform:uppercase; font-size:0.8rem;">
+                What We Stand For
+            </span>
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="divider"></div>
+
+            <div class="values-grid">
+                <div class="value-item">
+                    <span class="val-icon">📖</span>
+                    <h4>Bible-Centered</h4>
+                    <p>We hold Scripture as our ultimate authority and guide for faith and practice.</p>
+                </div>
+                <div class="value-item">
+                    <span class="val-icon">❤️</span>
+                    <h4>Compassionate Love</h4>
+                    <p>We extend unconditional love and practical care to all people, reflecting Christ's heart.</p>
+                </div>
+                <div class="value-item">
+                    <span class="val-icon">🤝</span>
+                    <h4>Community Service</h4>
+                    <p>We actively serve and uplift our community through education, health, and social programs.</p>
+                </div>
+                <div class="value-item">
+                    <span class="val-icon">🙏</span>
+                    <h4>Faithful Worship</h4>
+                    <p>We honor God with reverent, joyful, and Spirit-filled worship that transforms lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HISTORY TIMELINE ========== -->
+    <section class="history-section">
+        <div class="container">
+            <span class="section-subtitle" style="font-weight:600; color:#2a7a4a; letter-spacing:2px; text-transform:uppercase; font-size:0.8rem;">
+                Our Journey
+            </span>
+            <h2 class="section-title">A Rich History of Faith</h2>
+            <div class="divider"></div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">1924</span>
+                    <p>The first Seventh-day Adventist missionaries arrive on Mfangano Island, planting the seeds of the gospel.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">1928</span>
+                    <p>The Mfangano Central SDA Church is officially established, with a small congregation meeting in a modest structure.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">1950</span>
+                    <p>A permanent church building is constructed, becoming a spiritual landmark on the island.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">1975</span>
+                    <p>The church expands its outreach, establishing schools and health clinics to serve the community.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2000</span>
+                    <p>Major renovations and expansion of the church facilities to accommodate a growing congregation.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024</span>
+                    <p>Mfangano Central SDA Church celebrates 100 years of God's faithfulness, with a renewed vision for the future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LEADERSHIP ========== -->
+    <section class="leadership-section">
+        <div class="container">
+            <span class="section-subtitle" style="font-weight:600; color:#2a7a4a; letter-spacing:2px; text-transform:uppercase; font-size:0.8rem;">
+                Our Shepherds
+            </span>
+            <h2 class="section-title">Church Leadership</h2>
+            <div class="divider"></div>
+
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="avatar">📖</div>
+                    <h4>Pastor David Ochieng</h4>
+                    <span class="role">Senior Pastor</span>
+                    <p>Pastor David has served Mfangano Central for over 12 years, bringing a heart for discipleship and community transformation.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar">👩‍🏫</div>
+                    <h4>Elder Grace Auma</h4>
+                    <span class="role">Head Elder</span>
+                    <p>Elder Grace is a dedicated leader with a passion for women's ministry and youth development on the island.</p>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar">🎵</div>
+                    <h4>Brother Samuel Odhiambo</h4>
+                    <span class="role">Music Director</span>
+                    <p>Samuel leads the church's music ministry, inspiring worship through song and nurturing young musical talent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT / FOOTER ========== -->
+    <footer class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <h4>✝ Mfangano Central SDA Church</h4>
+                    <p>
+                        Mfangano Island, Lake Victoria,<br />
+                        Homa Bay County, Kenya
+                    </p>
+                    <p style="margin-top:8px;">
+                        📞 +254 712 345 678<br />
+                        ✉️ info@mfanangocentralsda.org
+                    </p>
+                    <p style="margin-top:8px; font-size:0.85rem; color:#7a9aaa;">
+                        Sabbath School: 9:30 AM<br />
+                        Divine Worship: 11:00 AM
+                    </p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="ministries.htm">Ministries</a></li>
+                        <li><a href="events.html">Events Calender</a></li>
+                        <li><a href="services.html">Bible Study</a></li>
+                        <li>Give Online</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Connect With Us</h4>
+                    <ul>
+                        <li>📘 Facebook</li>
+                        <li>🐦 Twitter / X</li>
+                        <li>📸 Instagram</li>
+                        <li>▶️ YouTube</li>
+                        <li>📱 WhatsApp Group</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Mfangano Central SDA Church &mdash; Built with <span class="heart">❤</span> for God's glory.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <button id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // -------- HAMBURGER MENU --------
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('open');
+            }
+        });
+
+        // -------- EXPLORE BUTTON (scroll to about) --------
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // -------- BACK TO TOP BUTTON --------
+        const backBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 600) {
+                backBtn.classList.add('visible');
+            } else {
+                backBtn.classList.remove('visible');
+            }
+        });
+
+        backBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // -------- ANIMATED COUNTERS (stats) --------
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        function animateCounters() {
+            statNumbers.forEach(el => {
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                const duration = 2000; // ms
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+                    el.textContent = current;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        el.textContent = target;
+                    }
+                }
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Intersection Observer for stats
+        const statsSection = document.querySelector('.stats-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(statsSection);
+
+        // -------- SMOOTH NAVBAR SHADOW ON SCROLL --------
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 20) {
+                navbar.style.boxShadow = '0 6px 30px rgba(0,0,0,0.35)';
+            } else {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.25)';
+            }
+        });
+
+        // -------- KEYBOARD ACCESSIBILITY (hamburger) --------
+        hamburger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navLinks.classList.toggle('open');
+            }
+        });
+
+        // -------- CONSOLE WELCOME --------
+        console.log('✝ Welcome to Mfangano Central SDA Church — "A church where every heart finds a home."');
+        console.log('📖 "For God so loved the world that He gave His one and only Son..." — John 3:16');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+brighton.jpg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mfangano Central SDA Church | Embracing Hope, Sharing Love</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        :root{
+          --primary:#2a7a4a; --primary-light:#4cb87a; --dark:#0f2a38;
+          --dark-2:#0a1e28; --text:#1e2a36; --muted:#5a6b7a; --bg:#f9f7f4;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth}
+        a{text-decoration:none;color:inherit}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .section-eyebrow{text-align:center;font-weight:700;color:var(--primary);letter-spacing:2px;text-transform:uppercase;font-size:.78rem;margin-bottom:6px;display:block}
+        .section-title{font-size:2.4rem;font-weight:800;color:var(--dark);text-align:center;letter-spacing:-0.5px}
+        .divider{width:70px;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));margin:14px auto 24px;border-radius:4px}
+
+        /* ---------- NAVBAR ---------- */
+        .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,42,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);transition:.3s}
+        .navbar .container{display:flex;align-items:center;justify-content:space-between;height:64px}
+        .nav-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.25rem}
+        .nav-brand span{font-weight:300;color:#aac7d6}
+        .nav-brand .cross{color:var(--primary-light);font-size:1.6rem}
+        .nav-links{display:flex;list-style:none;gap:4px}
+        .nav-links a{color:#d4e2ea;padding:8px 18px;border-radius:30px;font-weight:500;font-size:.92rem;transition:.25s}
+        .nav-links a:hover{background:rgba(76,184,122,.15);color:#fff}
+        .nav-links a.active{background:var(--primary);color:#fff;box-shadow:0 4px 16px rgba(42,122,74,.35)}
+        .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+        .hamburger span{width:28px;height:2.5px;background:#fff;border-radius:4px;transition:.3s}
+
+        /* ---------- HERO - FIXED ---------- */
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:140px 20px 100px;overflow:hidden;background:var(--dark)}
+        .hero-bg{
+            position:absolute;inset:0;
+            /* FIXED: proper gradient + image layer */
+            background-image: 
+              linear-gradient(135deg, rgba(15,42,56,.85) 0%, rgba(15,42,56,.4) 100%),
+              url('brighton.jpg');
+            background-position:center;
+            background-size:cover;
+            background-repeat:no-repeat;
+            z-index:0;
+            animation:zoomBg 20s ease-in-out infinite alternate;
+        }
+        .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(600px at 30% 20%, rgba(76,184,122,.15), transparent 60%)}
+        @keyframes zoomBg{from{transform:scale(1)} to{transform:scale(1.06)}}
+        .hero .container{position:relative;z-index:2}
+        .hero-badge{display:inline-block;background:rgba(76,184,122,.15);border:1px solid rgba(76,184,122,.3);padding:6px 22px;border-radius:40px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#8ed4b0;margin-bottom:24px;backdrop-filter:blur(6px)}
+        .hero h1{font-size:clamp(2.2rem, 6vw, 4.2rem);font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin-bottom:16px}
+        .hero h1 .highlight{background:linear-gradient(90deg,#4cb87a,#8ed4b0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.2rem;max-width:650px;margin:0 auto 32px;color:#d4e6f0;font-weight:300}
+        .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        .btn{padding:14px 36px;border-radius:50px;font-weight:600;font-size:1rem;transition:.3s;cursor:pointer;display:inline-block;border:none}
+        .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 30px rgba(42,122,74,.35)}
+        .btn-primary:hover{background:#3a9a5a;transform:translateY(-3px)}
+        .btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3)}
+        .btn-secondary:hover{background:rgba(255,255,255,.1);border-color:var(--primary-light);transform:translateY(-3px)}
+
+        /* ---------- SECTIONS ---------- */
+        .welcome-section,.events-section{background:#fff;padding:80px 0}
+        .services-section,.sermons-section{background:#f4f8f6;padding:70px 0}
+        .welcome-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;margin-top:20px}
+        .welcome-text h3{font-size:1.9rem;color:var(--dark);margin-bottom:12px}
+        .welcome-text p{color:#3d4f5e;margin-bottom:14px}
+        .welcome-quote{border-left:4px solid var(--primary);padding:16px 20px;background:#f0f5f2;border-radius:0 12px 12px 0;margin:20px 0;font-style:italic;font-weight:500}
+        .welcome-image{background:linear-gradient(135deg,#1a4a5a,var(--dark));border-radius:20px;padding:40px;color:#fff;min-height:320px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 20px 60px rgba(15,42,56,.2);position:relative;overflow:hidden}
+        .welcome-image .icon-big{font-size:3.5rem}
+        
+        .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:20px}
+        .card{background:#fff;padding:28px 24px;border-radius:16px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:.3s;border:1px solid #e6edea}
+        .card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:var(--primary-light)}
+        .card .ico{font-size:2.4rem;display:block;margin-bottom:10px}
+        .card .time{color:var(--primary);font-weight:700}
+
+        /* Stats */
+        .stats-section{background:var(--dark);padding:50px 0;color:#fff}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+        .stat-number{font-size:2.8rem;font-weight:800;color:var(--primary-light);display:block}
+        .stat-label{color:#aac7d6;font-weight:300}
+
+        /* CTA */
+        .cta-section{padding:80px 0;background:linear-gradient(135deg,var(--dark),#1a4a5a);color:#fff;text-align:center}
+        
+        /* Footer */
+        .footer{background:var(--dark-2);color:#b0c8d4;padding:50px 0 24px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
+        .footer-grid h4{color:#fff;margin-bottom:14px}
+        .footer-grid li{list-style:none;line-height:2}
+        .footer-grid li a:hover{color:#fff}
+        .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+        .socials a{width:38px;height:38px;display:grid;place-items:center;background:rgba(255,255,255,.06);border-radius:50%;transition:.25s}
+        .socials a:hover{background:var(--primary);color:#fff}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:.85rem;color:#7a9aaa}
+
+        #backToTop{position:fixed;bottom:30px;right:30px;background:var(--primary);color:#fff;border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(20px);transition:.3s;z-index:999;box-shadow:0 8px 28px rgba(42,122,74,.35)}
+        #backToTop.visible{opacity:1;visibility:visible;transform:translateY(0)}
+
+        @media(max-width:992px){.welcome-grid,.grid-3,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)} .hero h1{font-size:3rem}}
+        @media(max-width:768px){
+            .hamburger{display:flex} .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(15,42,56,.98);flex-direction:column;padding:16px;gap:0} .nav-links.open{display:flex}
+            .hero-buttons{flex-direction:column;align-items:center} .btn{width:100%;max-width:300px}
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-brand"><span class="cross">✝</span> Mfangano<span>Central</span></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="home.html" class="active">Home</a></li>
+      <li><a href="church.html">About Us</a></li>
+      <li><a href="about.html">Ministries</a></li>
+      <li><a href="sermons.html">Sermons</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contacts.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-badge">⛪ Welcome to Mfangano Central</div>
+    <h1>Embracing <span class="highlight">Hope,</span><br>Sharing <span class="highlight">Love</span></h1>
+    <p>A vibrant Seventh-day Adventist community on the shores of Lake Victoria, committed to following Jesus and serving our neighbors.</p>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="#services">Join Us This Sabbath</a>
+      <a class="btn btn-secondary" href="sermons.html">Watch Online</a>
+    </div>
+  </div>
+</section>
+
+<section class="welcome-section">
+  <div class="container">
+    <span class="section-eyebrow">A Place For You</span>
+    <h2 class="section-title">Welcome to Our Church Family</h2>
+    <div class="divider"></div>
+    <div class="welcome-grid">
+      <div class="welcome-text">
+        <h3>Rooted in Faith, Reaching Out in Love</h3>
+        <p><strong>Mfangano Central SDA Church</strong> is more than a building — it's a family transformed by the love of Jesus. Located on beautiful Mfangano Island, Lake Victoria, we've been a beacon of hope for nearly a century.</p>
+        <div class="welcome-quote">"Come as you are — you are loved, you belong, and you matter to God and to us."</div>
+        <p>Whether you're a long-time member or visiting for the first time, you'll find a warm welcome here.</p>
+      </div>
+      <div class="welcome-image">
+        <div class="icon-big">⛪</div>
+        <h3>Mfangano Central SDA</h3>
+        <p>Mfangano Island, Kenya</p>
+        <p style="opacity:.6;font-size:.85rem;margin-top:8px">"A church where every heart finds a home."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-eyebrow">Join Us</span>
+    <h2 class="section-title">Worship Service Times</h2>
+    <div class="divider"></div>
+    <div class="grid-3">
+      <div class="card"><span class="ico">📖</span><h4>Sabbath School</h4><span class="time">9:30 AM</span><p style="color:var(--muted);margin-top:6px">Interactive Bible study for all ages.</p></div>
+      <div class="card"><span class="ico">🙌</span><h4>Divine Worship</h4><span class="time">11:00 AM</span><p style="color:var(--muted);margin-top:6px">Uplifting praise, prayer, and life-changing message.</p></div>
+      <div class="card"><span class="ico">🤝</span><h4>Fellowship Lunch</h4><span class="time">1:00 PM</span><p style="color:var(--muted);margin-top:6px">Stay for fellowship and community.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div><span class="stat-number" data-count="98">0</span><span class="stat-label">Years of Ministry</span></div>
+      <div><span class="stat-number" data-count="1200">0</span><span class="stat-label">Active Members</span></div>
+      <div><span class="stat-number" data-count="15">0</span><span class="stat-label">Outreach Programs</span></div>
+      <div><span class="stat-number" data-count="8">0</span><span class="stat-label">Branches & Missions</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>✝ Mfangano Central SDA</h4>
+        <p>Mfangano Island, Lake Victoria,<br>Homa Bay County, Kenya<br>📞 +254 712 345 678<br>✉️ info@mfangano-centralsda.org</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Ministries</a></li>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <div class="socials">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="YouTube">▶</a>
+          <a href="#" title="Instagram">◎</a>
+          <a href="#" title="WhatsApp">💬</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Mfangano Central SDA Church — Built with ❤ for God's glory.</div>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<script>
+const ham=document.getElementById('hamburger'), links=document.getElementById('navLinks');
+ham.addEventListener('click',e=>{e.stopPropagation();links.classList.toggle('open')});
+document.addEventListener('click',e=>{if(!e.target.closest('.navbar'))links.classList.remove('open')});
+
+const back=document.getElementById('backToTop'), nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{back.classList.toggle('visible',scrollY>500); nav.style.background=scrollY>30?'rgba(15,42,56,.96)':'rgba(15,42,56,.9)'});
+back.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+// counter
+const nums=document.querySelectorAll('.stat-number');
+const io=new IntersectionObserver(es=>{
+  if(es[0].isIntersecting){
+    nums.forEach(el=>{
+      let t=+el.dataset.count, s=performance.now();
+      (function tick(n){let p=Math.min((n-s)/2200,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*t); if(p<1) requestAnimationFrame(tick); else el.textContent=t})(s);
+    });
+    io.disconnect();
+  }
+},{threshold:.3});
+io.observe(document.querySelector('.stats-section'));
+</script>
+</body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d9488">
+<title>Health — Care for Everyone</title>
+<meta name="description" content="Health: free clinics, community wellness and everyday care for everyone. No charge, ever.">
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root{
+    --bg:#f5faf9;
+    --surface:#ffffff;
+    --ink:#0a1f24;
+    --muted:#557076;
+    --brand:#0d9488;
+    --brand-dark:#0f766e;
+    --accent:#22d3ee;
+    --mint:#e6fffb;
+    --line:#d9e8e6;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(10,60,60,.08);
+    --shadow-lg:0 24px 60px rgba(6,48,45,.18);
+  }
+
+  /* ============ BASE ============ */
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  button{font-family:inherit}
+  .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--brand);color:#fff;
+    padding:.75rem 1.25rem;border-radius:0 0 12px 0;z-index:100;font-weight:700;
+  }
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+  /* ============ HEADER ============ */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
+  .brand{
+    display:flex;align-items:center;gap:.6rem;font-weight:800;
+    letter-spacing:-.02em;text-decoration:none;font-size:1.15rem;
+  }
+  .brand-mark{
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--brand),var(--accent));
+    color:#fff;font-size:1.1rem;box-shadow:0 6px 16px rgba(13,148,136,.35);
+    flex:none;
+  }
+  .nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
+  .nav a{
+    display:block;padding:.5rem .9rem;border-radius:999px;text-decoration:none;
+    font-size:.95rem;font-weight:600;color:var(--muted);
+    transition:background .2s,color .2s;
+  }
+  .nav a:hover{background:var(--mint);color:var(--brand-dark)}
+  .nav a.active{background:var(--brand);color:#fff}
+  .nav-toggle{
+    display:none;border:1px solid var(--line);background:var(--surface);
+    border-radius:12px;padding:.55rem .7rem;font-size:1.1rem;cursor:pointer;color:var(--ink);
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;color:#fff;overflow:hidden;
+    padding:clamp(3.5rem,8vw,6.5rem) 0 clamp(5.5rem,10vw,7.5rem);
+    background:
+      linear-gradient(115deg,rgba(6,48,45,.94) 0%,rgba(13,148,136,.78) 55%,rgba(34,211,238,.55) 100%),
+      url("https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto -10% -60% -10%;height:60%;
+    background:radial-gradient(closest-side,rgba(255,255,255,.18),transparent);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:660px}
+  .pill{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    padding:.4rem .9rem;border-radius:999px;font-size:.8rem;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(6px);
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;background:#5eead4;
+    box-shadow:0 0 0 0 rgba(94,234,212,.8);animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(94,234,212,.75)}
+    70%{box-shadow:0 0 0 14px rgba(94,234,212,0)}
+    100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,5.5vw,4rem);line-height:1.05;
+    margin:1rem 0 .9rem;letter-spacing:-.03em;font-weight:800;
+  }
+  .hero h1 span{
+    background:linear-gradient(90deg,#a7f3d0,#67e8f9);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{font-size:clamp(1rem,2vw,1.15rem);color:#e6fffb;max-width:52ch;margin:0 0 1.8rem}
+  .btn-row{display:flex;flex-wrap:wrap;gap:.85rem}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    padding:.85rem 1.5rem;border-radius:999px;font-weight:700;font-size:.98rem;
+    text-decoration:none;border:2px solid transparent;cursor:pointer;
+    transition:transform .18s,box-shadow .18s,background .18s,color .18s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:#fff;color:var(--brand-dark);box-shadow:0 12px 26px rgba(0,0,0,.22)}
+  .btn-primary:hover{background:var(--mint)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  .btn-brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 12px 26px rgba(13,148,136,.35)}
+  .btn-brand:hover{box-shadow:0 16px 34px rgba(13,148,136,.45)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+  /* ============ STATS / COUNTERS ============ */
+  .stats{position:relative;z-index:2;margin-top:-3.75rem}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .stat{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.5rem 1.1rem;text-align:center;box-shadow:var(--shadow);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .stat:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,60,60,.13)}
+  .stat .num{
+    display:block;font-size:clamp(1.7rem,3.4vw,2.35rem);font-weight:800;
+    letter-spacing:-.02em;color:var(--brand-dark);line-height:1.15;
+  }
+  .stat .label{
+    display:block;margin-top:.3rem;font-size:.82rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+  }
+
+  /* ============ SECTIONS ============ */
+  section{padding:clamp(3.5rem,7vw,5.5rem) 0}
+  .section-head{max-width:640px;margin:0 auto 2.75rem;text-align:center}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--brand);background:var(--mint);
+    padding:.35rem .9rem;border-radius:999px;margin-bottom:.9rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.15;
+    letter-spacing:-.025em;margin:0 0 .7rem;font-weight:800;
+  }
+  .section-head p{color:var(--muted);margin:0;font-size:1.03rem}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.75rem 1.5rem;box-shadow:var(--shadow);
+    transition:transform .22s,box-shadow .22s,border-color .22s;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:#bfe6e0}
+  .card-icon{
+    width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+    font-size:1.35rem;background:linear-gradient(135deg,var(--mint),#c9f7ef);
+    margin-bottom:1rem;border:1px solid #b7ece2;
+  }
+  .card h3{margin:0 0 .5rem;font-size:1.12rem;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--muted);font-size:.95rem}
+
+  /* Free / no charge banner */
+  .free-banner{
+    position:relative;overflow:hidden;border-radius:26px;color:#fff;
+    padding:clamp(2rem,5vw,3.25rem);
+    background:linear-gradient(120deg,var(--brand-dark),var(--brand) 55%,#0891b2);
+    box-shadow:var(--shadow-lg);
+    display:grid;grid-template-columns:1.4fr .6fr;gap:2rem;align-items:center;
+  }
+  .free-banner::before{
+    content:"";position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(255,255,255,.22),transparent);
+    top:-120px;right:-80px;pointer-events:none;
+  }
+  .free-banner h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:0 0 .6rem;letter-spacing:-.025em}
+  .free-banner p{margin:0 0 1.4rem;color:#d6fffa;max-width:46ch}
+  .free-badge{
+    justify-self:center;text-align:center;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.35);border-radius:22px;padding:1.5rem 1.75rem;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:170px;
+  }
+  .free-badge strong{display:block;font-size:2.6rem;line-height:1;letter-spacing:-.03em}
+  .free-badge span{display:block;margin-top:.35rem;font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#ccfbf1}
+
+  /* ============ CHAT (Twitter-style) ============ */
+  .chat-section{
+    position:relative;padding:clamp(3.5rem,7vw,5.5rem) 0;
+    background:
+      linear-gradient(160deg,rgba(4,40,38,.92),rgba(13,148,136,.85)),
+      url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat fixed;
+  }
+  .chat-section .section-head h2,.chat-section .section-head p{color:#fff}
+  .chat-section .section-head p{color:#ccfbf1}
+  .chat-section .eyebrow{background:rgba(255,255,255,.16);color:#ccfbf1}
+
+  .chat-shell{
+    max-width:660px;margin-inline:auto;background:rgba(255,255,255,.97);
+    border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.35);
+    overflow:hidden;border:1px solid rgba(255,255,255,.6);
+    backdrop-filter:blur(10px);
+  }
+  .chat-top{
+    display:flex;align-items:center;gap:.75rem;
+    padding:1rem 1.25rem;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fff,#f7fdfc);
+  }
+  .chat-avatar{
+    width:42px;height:42px;border-radius:50%;flex:none;
+    display:grid;place-items:center;font-weight:800;color:#fff;font-size:1rem;
+    background:linear-gradient(135deg,var(--brand),var(--accent));
+    box-shadow:0 6px 14px rgba(13,148,136,.35);
+  }
+  .chat-top-meta{flex:1;min-width:0}
+  .chat-top-meta strong{display:block;font-size:.98rem;letter-spacing:-.01em}
+  .chat-top-meta small{color:var(--muted);font-size:.8rem}
+  .live{
+    display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:800;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark);
+    background:var(--mint);border:1px solid #b7ece2;padding:.3rem .6rem;border-radius:999px;
+  }
+
+  /* Composer */
+  .composer{padding:1rem 1.25rem;border-bottom:1px solid var(--line);background:#fff}
+  .composer-row{display:flex;gap:.75rem;align-items:flex-start}
+  .you-avatar{
+    width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-weight:800;font-size:.9rem;color:#fff;
+    background:linear-gradient(135deg,#0ea5e9,#22d3ee);
+  }
+  .composer textarea{
+    flex:1;width:100%;resize:none;border:1px solid var(--line);border-radius:14px;
+    padding:.7rem .9rem;font-size:.95rem;font-family:inherit;color:var(--ink);
+    background:#fbfefd;min-height:56px;max-height:150px;line-height:1.5;
+    transition:border-color .2s,box-shadow .2s,background .2s;
+  }
+  .composer textarea:focus{
+    outline:none;border-color:var(--brand);background:#fff;
+    box-shadow:0 0 0 4px rgba(13,148,136,.12);
+  }
+  .composer-actions{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    margin-top:.6rem;padding-left:50px;
+  }
+  .charcount{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  .charcount.warn{color:#b45309;font-weight:700}
+  .charcount.over{color:#dc2626;font-weight:800}
+  .composer .btn{padding:.55rem 1.25rem;font-size:.9rem}
+
+  /* Stream */
+  .stream{max-height:430px;overflow-y:auto;padding:.4rem 0;background:#fff}
+  .stream::-webkit-scrollbar{width:9px}
+  .stream::-webkit-scrollbar-thumb{background:#cfe6e2;border-radius:99px}
+  .stream::-webkit-scrollbar-track{background:#f7fdfc}
+
+  .post{
+    display:flex;gap:.75rem;padding:.9rem 1.25rem;
+    border-bottom:1px solid #f0f7f6;animation:pop .32s ease both;
+  }
+  .post:last-child{border-bottom:0}
+  @keyframes pop{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .post-avatar{
+    width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-weight:800;font-size:.85rem;color:#fff;
+  }
+  .post-body{min-width:0;flex:1}
+  .post-head{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap;font-size:.9rem}
+  .post-head strong{letter-spacing:-.01em}
+  .post-head .handle,.post-head .time{color:var(--muted);font-size:.82rem}
+  .post-text{margin:.15rem 0 .5rem;font-size:.95rem;word-wrap:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
+  .post-actions{display:flex;gap:1.4rem;color:var(--muted);font-size:.82rem}
+  .post-actions span{display:inline-flex;align-items:center;gap:.35rem}
+  .post-actions button{
+    background:none;border:0;padding:0;color:inherit;font-size:inherit;cursor:pointer;
+    display:inline-flex;align-items:center;gap:.35rem;border-radius:8px;transition:color .18s,transform .18s;
+  }
+  .post-actions button:hover{color:var(--brand);transform:scale(1.06)}
+  .post-actions button.liked{color:#e11d48}
+
+  .empty-chat{padding:2.5rem 1.25rem;text-align:center;color:var(--muted);font-size:.92rem}
+  .empty-chat strong{display:block;color:var(--ink);margin-bottom:.25rem}
+
+  /* ============ FOOTER ============ */
+  .site-footer{background:#062a28;color:#a7cfca;padding:3.25rem 0 1.5rem;font-size:.92rem}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.25rem}
+  .site-footer .brand{color:#fff;margin-bottom:.75rem}
+  .site-footer p{margin:0;max-width:34ch;line-height:1.7}
+  .site-footer h4{
+    color:#fff;font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;
+    margin:0 0 .9rem;font-weight:800;
+  }
+  .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+  .site-footer a{text-decoration:none;transition:color .2s}
+  .site-footer a:hover{color:#5eead4}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;
+    display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;
+    font-size:.85rem;color:#7fb3ad;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:900px){
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .cards{grid-template-columns:1fr}
+    .free-banner{grid-template-columns:1fr;text-align:left}
+    .free-badge{justify-self:start}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    .nav-toggle{display:block}
+    .nav{
+      position:absolute;left:0;right:0;top:100%;
+      background:#fff;border-bottom:1px solid var(--line);
+      box-shadow:0 18px 30px rgba(10,60,60,.1);
+      display:none;padding:.6rem 1.25rem 1rem;
+    }
+    .nav.open{display:block}
+    .nav ul{flex-direction:column;gap:.15rem}
+    .nav a{padding:.7rem .9rem;border-radius:12px}
+    .chat-section{background-attachment:scroll}
+    .footer-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:420px){
+    .stats-grid{grid-template-columns:1fr}
+    .composer-actions{padding-left:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">✚</span>
+      Health
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">☰</button>
+
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="#stats">Impact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#chat">Community</a></li>
+        <li><a href="#free">No Charge</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <span class="pill"><span class="dot" aria-hidden="true"></span> Community health · Always free</span>
+      <h1>Good health should never <span>come with a bill</span>.</h1>
+      <p>
+        Health brings free clinics, wellness checks and everyday care to people who need it most.
+        No charge, no paperwork, no barriers — just care.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#chat">Join the conversation →</a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COUNTERS ================= -->
+  <div class="stats" id="stats">
+    <div class="wrap stats-grid">
+      <div class="stat">
+        <span class="num" data-count="24800" data-suffix="+">0</span>
+        <span class="label">People cared for</span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="132" data-suffix="">0</span>
+        <span class="label">Free clinics</span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="940" data-suffix="+">0</span>
+        <span class="label">Volunteers</span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="100" data-suffix="%">0</span>
+        <span class="label">Free of charge</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2>Care that meets people where they are</h2>
+        <p>Every service below is delivered by qualified volunteers and partner clinics — and every one of them is free.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🩺</div>
+          <h3>Free health checks</h3>
+          <p>Blood pressure, glucose, BMI and general screenings at pop-up clinics in local neighbourhoods.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">💬</div>
+          <h3>Talk to a professional</h3>
+          <p>Confidential advice from nurses and counsellors, in person or over a secure call.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🚑</div>
+          <h3>Emergency support</h3>
+          <p>Fast referrals and transport to partner hospitals when something can't wait.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🌱</div>
+          <h3>Wellness &amp; prevention</h3>
+          <p>Nutrition workshops, vaccination drives and mental-health first-aid training.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">👩‍👧</div>
+          <h3>Family &amp; maternal care</h3>
+          <p>Prenatal check-ups, postnatal follow-ups and child growth monitoring.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🤝</div>
+          <h3>Community outreach</h3>
+          <p>Home visits for older people and anyone who cannot travel to a clinic.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FREE / NO CHARGE ================= -->
+  <section id="free" style="padding-top:0">
+    <div class="wrap">
+      <div class="free-banner">
+        <div>
+          <h2>Is there a charge? No. Never.</h2>
+          <p>
+            Health is a non-profit community programme. Every consultation, screening and referral on this
+            page is funded by donations and delivered at zero cost to you. There are no hidden fees and
+            no sign-up charges — if anyone asks you for money on our behalf, it isn't us.
+          </p>
+          <a class="btn btn-primary" href="#chat">Ask the community →</a>
+        </div>
+        <div class="free-badge" aria-label="Zero cost">
+          <strong>0</strong>
+          <span>Cost to you</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHAT ================= -->
+  <section class="chat-section" id="chat">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Community</span>
+        <h2>What people are saying</h2>
+        <p>Share a question, a thank-you, or a health tip. Be kind — this is a public board.</p>
+      </div>
+
+      <div class="chat-shell">
+        <div class="chat-top">
+          <div class="chat-avatar" aria-hidden="true">H</div>
+          <div class="chat-top-meta">
+            <strong>Health Community</strong>
+            <small>@healthcare · Free, open to everyone</small>
+          </div>
+          <span class="live"><span class="dot" aria-hidden="true"></span>Live</span>
+        </div>
+
+        <!-- Composer -->
+        <form class="composer" id="chatForm" autocomplete="off">
+          <div class="composer-row">
+            <div class="you-avatar" aria-hidden="true">YO</div>
+            <label class="sr-only" for="chatInput" style="position:absolute;left:-9999px">Write a message</label>
+            <textarea id="chatInput" maxlength="280" placeholder="Ask a question or share a health tip…" rows="1"></textarea>
+          </div>
+          <div class="composer-actions">
+            <span class="charcount" id="charcount">0 / 280</span>
+            <button type="submit" class="btn btn-brand" id="sendBtn" disabled>Post</button>
+          </div>
+        </form>
+
+        <!-- Stream -->
+        <div class="stream" id="stream" role="log" aria-live="polite" aria-label="Community posts"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">✚</span>
+          Health
+        </a>
+        <p>A non-profit community health programme. Free clinics, free advice, free care — funded entirely by donations and volunteers.</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#stats">Our impact</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#chat">Community</a></li>
+          <li><a href="#free">No charge</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#services">Find a clinic</a></li>
+          <li><a href="#chat">Ask a question</a></li>
+          <li><a href="#free">Costs &amp; fees</a></li>
+          <li><a href="#top">Volunteer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@health.example">hello@health.example</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+          <li>Mon–Sat · 8:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year">2025</span> Health Community. All rights reserved.</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================
+     1. MOBILE NAV TOGGLE
+     ========================================================= */
+  var navToggle = document.getElementById("navToggle");
+  var primaryNav = document.getElementById("primaryNav");
+
+  navToggle.addEventListener("click", function () {
+    var open = primaryNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.textContent = open ? "✕" : "☰";
+  });
+
+  primaryNav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      primaryNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.textContent = "☰";
+    }
+  });
+
+  /* =========================================================
+     2. ANIMATED COUNTERS (triggered on scroll)
+     ========================================================= */
+  var counters = document.querySelectorAll("[data-count]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    var suffix = el.getAttribute("data-suffix") || "";
+
+    if (reduceMotion) {
+      el.textContent = target.toLocaleString() + suffix;
+      return;
+    }
+
+    var duration = 1500;
+    var start = null;
+
+    function step(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      // easeOutCubic
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = Math.round(eased * target);
+      el.textContent = value.toLocaleString() + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target.toLocaleString() + suffix;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  if ("IntersectionObserver" in window) {
+    var counterObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(function (c) { counterObserver.observe(c); });
+  } else {
+    counters.forEach(animateCounter);
+  }
+
+  /* =========================================================
+     3. ACTIVE NAV LINK ON SCROLL
+     ========================================================= */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  var sections = navLinks
+    .map(function (link) {
+      var id = link.getAttribute("href");
+      return id && id.charAt(0) === "#" ? document.querySelector(id) : null;
+    })
+    .filter(Boolean);
+
+  function setActiveNav() {
+    var scrollPos = window.scrollY + 130;
+    var current = null;
+
+    sections.forEach(function (sec) {
+      if (sec.offsetTop <= scrollPos) current = sec;
+    });
+
+    navLinks.forEach(function (link) {
+      var isActive = current && link.getAttribute("href") === "#" + current.id;
+      link.classList.toggle("active", !!isActive);
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        setActiveNav();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  setActiveNav();
+
+  /* =========================================================
+     4. TWITTER-STYLE COMMUNITY CHAT
+     ========================================================= */
+  var STORAGE_KEY = "health-chat-v1";
+  var MAX_LEN = 280;
+
+  var form = document.getElementById("chatForm");
+  var input = document.getElementById("chatInput");
+  var sendBtn = document.getElementById("sendBtn");
+  var charcount = document.getElementById("charcount");
+  var stream = document.getElementById("stream");
+
+  var SEED = [
+    {
+      id: "seed-1",
+      name: "Amara O.",
+      handle: "@amara_o",
+      time: "2h",
+      text: "Visited the free clinic on Saturday. Blood pressure checked, no bill, no forms. Honestly the kindest staff I've met. 💚",
+      likes: 24,
+      liked: false,
+      color: "linear-gradient(135deg,#0d9488,#22d3ee)"
+    },
+    {
+      id: "seed-2",
+      name: "Dr. Kenji",
+      handle: "@drkenji",
+      time: "5h",
+      text: "Reminder: 30 minutes of walking a day does more for your heart than most supplements. Start small, stay consistent.",
+      likes: 57,
+      liked: false,
+      color: "linear-gradient(135deg,#0891b2,#6366f1)"
+    },
+    {
+      id: "seed-3",
+      name: "Health Community",
+      handle: "@healthcare",
+      time: "1d",
+      text: "Quick answer to the most common question: no, there is no charge. Not for a check-up, not for advice, not for a referral. Ever.",
+      likes: 112,
+      liked: false,
+      color: "linear-gradient(135deg,#0f766e,#0ea5e9)"
+    }
+  ];
+
+  var posts = loadPosts();
+
+  function loadPosts() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length) return parsed;
+      }
+    } catch (err) { /* storage unavailable — fall back to seed */ }
+    return SEED.slice();
+  }
+
+  function savePosts() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts.slice(0, 100)));
+    } catch (err) { /* ignore quota / private mode errors */ }
+  }
+
+  function initials(name) {
+    return name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map(function (w) { return w.charAt(0).toUpperCase(); })
+      .join("");
+  }
+
+  function escapeHTML(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function render() {
+    stream.innerHTML = "";
+
+    if (!posts.length) {
+      var empty = document.createElement("div");
+      empty.className = "empty-chat";
+      empty.innerHTML = "<strong>No posts yet</strong>Be the first to share something with the community.";
+      stream.appendChild(empty);
+      return;
+    }
+
+    posts.forEach(function (post) {
+      var article = document.createElement("article");
+      article.className = "post";
+
+      var avatar = document.createElement("div");
+      avatar.className = "post-avatar";
+      avatar.style.background = post.color || "linear-gradient(135deg,#0d9488,#22d3ee)";
+      avatar.textContent = initials(post.name);
+
+      var body = document.createElement("div");
+      body.className = "post-body";
+
+      var head = document.createElement("div");
+      head.className = "post-head";
+      head.innerHTML =
+        "<strong>" + escapeHTML(post.name) + "</strong>" +
+        '<span class="handle">' + escapeHTML(post.handle) + "</span>" +
+        '<span class="time">· ' + escapeHTML(post.time) + "</span>";
+
+      var text = document.createElement("p");
+      text.className = "post-text";
+      text.textContent = post.text;
+
+      var actions = document.createElement("div");
+      actions.className = "post-actions";
+
+      var likeBtn = document.createElement("button");
+      likeBtn.type = "button";
+      likeBtn.className = post.liked ? "liked" : "";
+      likeBtn.setAttribute("aria-pressed", post.liked ? "true" : "false");
+      likeBtn.setAttribute("aria-label", "Like this post");
+      likeBtn.innerHTML = "♥ <span>" + post.likes + "</span>";
+      likeBtn.addEventListener("click", function () {
+        post.liked = !post.liked;
+        post.likes += post.liked ? 1 : -1;
+        savePosts();
+        render();
+      });
+
+      var reply = document.createElement("span");
+      reply.innerHTML = "💬 Reply";
+
+      var share = document.createElement("span");
+      share.innerHTML = "↗ Share";
+
+      actions.appendChild(likeBtn);
+      actions.appendChild(reply);
+      actions.appendChild(share);
+
+      body.appendChild(head);
+      body.appendChild(text);
+      body.appendChild(actions);
+
+      article.appendChild(avatar);
+      article.appendChild(body);
+      stream.appendChild(article);
+    });
+  }
+
+  /* Character counter + send button state */
+  function updateComposer() {
+    var len = input.value.length;
+    charcount.textContent = len + " / " + MAX_LEN;
+    charcount.classList.toggle("warn", len > MAX_LEN - 40 && len <= MAX_LEN);
+    charcount.classList.toggle("over", len > MAX_LEN);
+
+    var trimmed = input.value.trim();
+    sendBtn.disabled = trimmed.length === 0 || len > MAX_LEN;
+  }
+
+  input.addEventListener("input", function () {
+    updateComposer();
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 150) + "px";
+  });
+
+  /* Ctrl/Cmd + Enter also posts */
+  input.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var text = input.value.trim();
+    if (!text || text.length > MAX_LEN) return;
+
+    var newPost = {
+      id: "p-" + Date.now(),
+      name: "You",
+      handle: "@guest",
+      time: "now",
+      text: text,
+      likes: 0,
+      liked: false,
+      color: "linear-gradient(135deg,#0ea5e9,#22d3ee)"
+    };
+
+    posts.unshift(newPost);
+    savePosts();
+    render();
+
+    input.value = "";
+    input.style.height = "auto";
+    updateComposer();
+    stream.scrollTop = 0;
+    input.focus();
+  });
+
+  render();
+  updateComposer();
+
+  /* =========================================================
+     5. FOOTER YEAR
+     ========================================================= */
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
